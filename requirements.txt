@@ -2,3 +2,4 @@ Flask
 pymysql
 Flask-SQLAlchemy
 cryptography
+python-dotenv
