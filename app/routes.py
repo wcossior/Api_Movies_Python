@@ -52,4 +52,12 @@ def register_routes(app):
         return jsonify({'message': 'Movie updated'}), 200
 
 
-   
+    @app.route('/movies/<int:id>', methods=['DELETE'])
+    def delete_movie(id):
+        movie = MyMovie.query.get(id)
+        if not movie:
+            return jsonify({'message': 'Movie not found'}), 404
+
+        db.session.delete(movie)
+        db.session.commit()
+        return jsonify({'message': 'Movie deleted'}), 200
