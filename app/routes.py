@@ -21,4 +21,20 @@ def register_routes(app):
         return jsonify({'message': 'New movie created!'}), 201
     
 
+    @app.route('/movies', methods=['GET'])
+    def get_movies():
+        movies = MyMovie.query.all()
+        print(movies)
+        result = []
+        for movie in movies:
+            movie_data = {
+                'ID': movie.ID,
+                'Autor': movie.Autor,
+                'Descripcion': movie.Descripcion,
+                'Fecha_de_Estreno': movie.Fecha_de_Estreno
+            }
+            result.append(movie_data)
+        return jsonify(result)
+
+
     
