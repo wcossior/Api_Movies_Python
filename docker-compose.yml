@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_collections
+      MYSQL_USER: wil
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3310:3306"
+    volumes:
+      - ./mysqldata:/mysql/data
+
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      FLASK_ENV: development
+      DATABASE_URL: mysql+pymysql://wil:123456@db/my_collections
+    volumes:
+      - .:/app
+volumes:
+  db_data:
