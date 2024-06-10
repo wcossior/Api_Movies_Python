@@ -37,4 +37,19 @@ def register_routes(app):
         return jsonify(result)
 
 
-    
+    @app.route('/movies/<int:id>', methods=['PUT'])
+    def update_movie(id):
+        movie = MyMovie.query.get(id)
+        if not movie:
+            return jsonify({'message': 'Movie not found'}), 404
+
+        data = request.get_json()
+        movie.Autor = data['Autor']
+        movie.Descripcion = data['Descripcion']
+        movie.Fecha_de_Estreno = data['Fecha_de_Estreno']
+
+        db.session.commit()
+        return jsonify({'message': 'Movie updated'}), 200
+
+
+   
