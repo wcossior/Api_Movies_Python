@@ -31,6 +31,27 @@ SQLALCHEMY_DATABASE_URI: La URI de la base de datos que SQLAlchemy usará para c
 docker-compose up --build
 ```
 
+### Algunos ejemplos para hacer un post
+
+    {
+        "Autor": "Gabriel García Márquez",
+        "Descripcion": "Cien años de soledad es una novela escrita por el autor colombiano.",
+        "Fecha_de_Estreno": "Tue, 30 May 1967 00:00:00 GMT",
+        "ID": 2
+    },
+    {
+        "Autor": "J.K. Rowling",
+        "Descripcion": "Harry Potter y la piedra filosofal es la primera novela de la serie de Harry Potter.",
+        "Fecha_de_Estreno": "Thu, 26 Jun 1997 00:00:00 GMT",
+        "ID": 3
+    },
+    {
+        "Autor": "George Orwell",
+        "Descripcion": "1984 es una novela distópica publicada en 1949.",
+        "Fecha_de_Estreno": "Wed, 08 Jun 1949 00:00:00 GMT",
+        "ID": 4
+    }
+
 ### Endpoints de la API
 
 POST /movies: Crear una nueva película en la base de datos.
